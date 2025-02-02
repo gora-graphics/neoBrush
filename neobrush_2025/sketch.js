@@ -18,11 +18,16 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(src.width, src.height);
-  pixelDensity(10);
+  canvas = createCanvas(src.width, src.height);
+  pixelDensity(1);
   background(0);
-  canvas = createGraphics(src.width, src.height);
-  canvas.clear();
+  canvas.position((windowWidth - src.width) / 2, (windowHeight - src.height) / 2);
+  canvas.style('display', 'block');
+  canvas.style('margin', 'auto');
+  canvas.style('position', 'absolute');
+  canvas.style('top', '50%');
+  canvas.style('left', '50%');
+  canvas.style('transform', 'translate(-50%, -50%)');
   controlPanel = new ControlPanel();
 }
 
