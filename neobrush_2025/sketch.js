@@ -18,7 +18,7 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(src.width/2, src.height/2);
+  canvas = createCanvas(src.width, src.height);
   pixelDensity(1);
   background(0);
   canvas.position((windowWidth - src.width) / 2, (windowHeight - src.height) / 2);
