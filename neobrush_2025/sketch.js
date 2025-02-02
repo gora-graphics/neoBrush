@@ -14,11 +14,11 @@ let numberOfVerticesMin = 5;
 let numberOfVerticesMax = 10;
 
 function preload() {
-  src = loadImage("Honeyview_img20230716_22171431.jpg");
+  src = loadImage("img20230716_22171431.jpg");
 }
 
 function setup() {
-  createCanvas(480, 720);
+  createCanvas(2418, 3552);
   pixelDensity(1);
   background(0);
   canvas = createGraphics(src.width, src.height);
