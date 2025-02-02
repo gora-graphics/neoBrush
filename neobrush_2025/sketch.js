@@ -18,8 +18,8 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(src.width*3, src.height*3);
-  pixelDensity(1);
+  createCanvas(src.width, src.height);
+  pixelDensity(10);
   background(0);
   canvas = createGraphics(src.width, src.height);
   canvas.clear();
