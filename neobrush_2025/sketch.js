@@ -1,12 +1,13 @@
 let lines = [];
 let src;
 let canvas;
+let showSource = false;
 let controlPanel;
 
 let lineWeight = 1;
 let lineAlpha = 100;
 let easeMin = 0.01;
-easeMax = 0.5;
+let easeMax = 0.5;
 let speedMin = 0.25;
 let speedMax = 0.5;
 let numberOfLines = 100;
@@ -18,25 +19,21 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(src.width, src.height);
+  createCanvas(480, 720);
   pixelDensity(1);
   background(0);
-  canvas.position((windowWidth - src.width) / 2, (windowHeight - src.height) / 2);
-  canvas.style('display', 'block');
-  canvas.style('margin', 'auto');
-  canvas.style('position', 'absolute');
-  canvas.style('top', '50%');
-  canvas.style('left', '50%');
-  canvas.style('transform', 'translate(-50%, -50%)');
+  canvas = createGraphics(src.width, src.height);
+  canvas.clear();
   controlPanel = new ControlPanel();
 }
 
 function draw() {
-  image(src, 0, 0);
-  image(canvas, 0, 0);
+  background(0);
+  if (showSource) image(src, 0, 0, width, height);
+  image(canvas, 0, 0, width, height);
   controlPanel.update();
   
-  if (mouseIsPressed || touches.length > 0) {
+  if (mouseIsPressed) {
     for (let line of lines) {
       line.update();
       line.render();
@@ -45,24 +42,6 @@ function draw() {
 }
 
 function mousePressed() {
-  addLines();
-}
-
-function mouseReleased() {
-  lines = [];
-}
-
-function touchStarted() {
-  addLines();
-  return false;
-}
-
-function touchEnded() {
-  lines = [];
-  return false;
-}
-
-function addLines() {
   for (let i = 0; i < numberOfLines; i++) {
     lines.push(new SketchLine(
       ceil(random(numberOfVerticesMin, numberOfVerticesMax)),
@@ -70,6 +49,10 @@ function addLines() {
       random(speedMin, speedMax)
     ));
   }
+}
+
+function mouseReleased() {
+  lines = [];
 }
 
 function keyPressed() {
@@ -80,6 +63,9 @@ function keyPressed() {
     let fileName = `composition-${month()}-${day()}-${hour()}-${minute()}-${second()}.png`;
     saveCanvas(canvas, fileName, 'png');
     print("Saved: " + fileName);
+  }
+  if (key === 'z') {
+    showSource = !showSource;
   }
 }
 
@@ -136,3 +122,5 @@ class ControlPanel {
     lineAlpha = this.lineAlphaSlider.value();
   }
 }
+
+in this sketch remove the funtion of z and make the image as background image of the sketch 
