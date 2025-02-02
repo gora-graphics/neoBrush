@@ -31,7 +31,7 @@ function draw() {
   image(canvas, 0, 0, width, height);
   controlPanel.update();
   
-  if (mouseIsPressed) {
+  if (mouseIsPressed || touches.length > 0) {
     for (let line of lines) {
       line.update();
       line.render();
@@ -40,6 +40,24 @@ function draw() {
 }
 
 function mousePressed() {
+  addLines();
+}
+
+function mouseReleased() {
+  lines = [];
+}
+
+function touchStarted() {
+  addLines();
+  return false;
+}
+
+function touchEnded() {
+  lines = [];
+  return false;
+}
+
+function addLines() {
   for (let i = 0; i < numberOfLines; i++) {
     lines.push(new SketchLine(
       ceil(random(numberOfVerticesMin, numberOfVerticesMax)),
@@ -47,10 +65,6 @@ function mousePressed() {
       random(speedMin, speedMax)
     ));
   }
-}
-
-function mouseReleased() {
-  lines = [];
 }
 
 function keyPressed() {
