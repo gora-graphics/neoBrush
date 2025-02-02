@@ -1,7 +1,6 @@
 let lines = [];
 let src;
 let canvas;
-let showSource = false;
 let controlPanel;
 
 let lineWeight = 1;
@@ -28,8 +27,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);
-  if (showSource) image(src, 0, 0, width, height);
+  image(src, 0, 0, width, height);
   image(canvas, 0, 0, width, height);
   controlPanel.update();
   
@@ -63,9 +61,6 @@ function keyPressed() {
     let fileName = `composition-${month()}-${day()}-${hour()}-${minute()}-${second()}.png`;
     saveCanvas(canvas, fileName, 'png');
     print("Saved: " + fileName);
-  }
-  if (key === 'z') {
-    showSource = !showSource;
   }
 }
 
