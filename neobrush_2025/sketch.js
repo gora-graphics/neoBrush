@@ -6,7 +6,7 @@ let controlPanel;
 let lineWeight = 1;
 let lineAlpha = 100;
 let easeMin = 0.01;
-let easeMax = 0.5;
+easeMax = 0.5;
 let speedMin = 0.25;
 let speedMax = 0.5;
 let numberOfLines = 100;
@@ -14,11 +14,11 @@ let numberOfVerticesMin = 5;
 let numberOfVerticesMax = 10;
 
 function preload() {
-  src = loadImage("img20230716_22171431.jpg");
+  src = loadImage("Honeyview_img20230716_22171431.jpg");
 }
 
 function setup() {
-  createCanvas(2418, 3552);
+  createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
   background(0);
   canvas = createGraphics(src.width, src.height);
