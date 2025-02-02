@@ -18,7 +18,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(src.width, src.height);
   pixelDensity(1);
   background(0);
   canvas = createGraphics(src.width, src.height);
@@ -27,8 +27,8 @@ function setup() {
 }
 
 function draw() {
-  image(src, 0, 0, width, height);
-  image(canvas, 0, 0, width, height);
+  image(src, 0, 0);
+  image(canvas, 0, 0);
   controlPanel.update();
   
   if (mouseIsPressed || touches.length > 0) {
